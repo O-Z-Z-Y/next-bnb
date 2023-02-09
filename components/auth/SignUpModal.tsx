@@ -9,9 +9,12 @@ import ClosedEyeIcon from "../../public/static/svg/auth/closed_eye.svg"
 import Input from "../common/Input";
 import palette from "../../styles/palette";
 
+
 import { monthList, dayList, yearList } from "../../lib/staticData";
 import Selector from "../common/Selector";
 import Button from "../common/Button";
+
+import { signupAPI } from "../../lib/api/auth";
 
 const Container = styled.form`
   width: 568px;
@@ -61,8 +64,11 @@ const Container = styled.form`
     border-bottom: 1px solid ${palette.gray_eb};
   }
 `;
+interface IProps {
+  closeModal: () => void;
+}
 
-const SignUpModal: React.FC = () => {
+const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
   const [email, setEmail] = useState("");
   const [lastname, setLastname] = useState("");
   const [firstname, setFirstname] = useState("");
@@ -110,10 +116,30 @@ const SignUpModal: React.FC = () => {
   const onChangeBirthYear = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setBirthYear(event.target.value);
   }
+
+  //* 회원가입 폼 제출하기
+  const onSubmitSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    try {
+      const signUpBody = {
+        email,
+        lastname,
+        firstname,
+        password,
+        birthday: new Date(
+          `${birthYear}-${birthMonth!.replace("월", "")}-${birthDay}`
+        ).toISOString(),
+      };
+      await signupAPI(signUpBody);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   
   return (
-  <Container>
-    <CloseXIcon className="modal-close-x-icon" />
+  <Container onSubmit={onSubmitSignUp}>
+    <CloseXIcon className="modal-close-x-icon" onClick={closeModal}/>
     <div className="input-wrapper">
       <Input type="email" name="email" placeholder="이메일 주소" 
       icon={<MailIcon/>} value={email} onChange={onChangeEmail} />
