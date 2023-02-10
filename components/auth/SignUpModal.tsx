@@ -9,12 +9,14 @@ import ClosedEyeIcon from "../../public/static/svg/auth/closed_eye.svg"
 import Input from "../common/Input";
 import palette from "../../styles/palette";
 
-
 import { monthList, dayList, yearList } from "../../lib/staticData";
 import Selector from "../common/Selector";
 import Button from "../common/Button";
 
 import { signupAPI } from "../../lib/api/auth";
+
+import { useDispatch } from "react-redux";
+import { userActions } from "../../store/user";
 
 const Container = styled.form`
   width: 568px;
@@ -32,6 +34,7 @@ const Container = styled.form`
     position: relative;
     margin-bottom: 16px;
   }
+  
   .sign-up-birthday-label {
     font-size: 16px;
     font-weight: 600;
@@ -79,6 +82,8 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
   const [birthYear, setBirthYear] = useState<string | undefined>();
   const [birthDay, setBirthDay] = useState<string | undefined>();
   const [birthMonth, setBirthMonth] = useState<string | undefined>();
+
+  const dispatch = useDispatch();
 
   //* 비밀번호 숨김 토글하기
   const toggleHidePassword = () => {
@@ -131,7 +136,11 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
           `${birthYear}-${birthMonth!.replace("월", "")}-${birthDay}`
         ).toISOString(),
       };
-      await signupAPI(signUpBody);
+      const { data } = await signupAPI(signUpBody);
+
+      dispatch(userActions.setLoggedUser(data));
+
+      closeModal();
     } catch (e) {
       console.log(e);
     }

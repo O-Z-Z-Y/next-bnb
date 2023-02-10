@@ -45,11 +45,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         "Set-Cookie",
         `access_token=${token}; path=/; expires=${new Date(
           Date.now() + 60 * 60 * 24 * 1000 * 3 // 3일
-        )}; httponly`
+        ).toUTCString()}; httponly`
       );
+      resolve(token);
     });
 
-    return res.end();
+    const newUserWithoutPassword: Partial<Pick<StoredUserType, "password">> = newUser;
+
+    delete newUserWithoutPassword.password;
+    res.statusCode = 200;
+    console.log('newUserWithoutPassword는 ' + newUserWithoutPassword)
+    console.log('newUser는'+ newUser)
+    return res.send(newUser);
   }
   res.statusCode = 405;
 
