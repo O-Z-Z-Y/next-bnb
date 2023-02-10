@@ -6,9 +6,9 @@ import MailIcon from "../../public/static/svg/auth/mail.svg"
 import PersonIcon from "../../public/static/svg/auth/person.svg"
 import OpenedEyeIcon from "../../public/static/svg/auth/opened_eye.svg"
 import ClosedEyeIcon from "../../public/static/svg/auth/closed_eye.svg"
-import Input from "../common/Input";
 import palette from "../../styles/palette";
 
+import Input from "../common/Input";
 import { monthList, dayList, yearList } from "../../lib/staticData";
 import Selector from "../common/Selector";
 import Button from "../common/Button";
@@ -17,6 +17,9 @@ import { signupAPI } from "../../lib/api/auth";
 
 import { useDispatch } from "react-redux";
 import { userActions } from "../../store/user";
+import { commonActions } from "../../store/common";
+
+import useValidateMode from "../../hooks/useValidateMode";
 
 const Container = styled.form`
   width: 568px;
@@ -85,6 +88,8 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
 
   const dispatch = useDispatch();
 
+  const { setValidateMode } = useValidateMode();
+
   //* 비밀번호 숨김 토글하기
   const toggleHidePassword = () => {
     setHidePassword(!hidePassword);
@@ -126,6 +131,12 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
   const onSubmitSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    setValidateMode(true);
+
+    if (!email || !lastname || !!firstname || !password) {
+      return undefined;
+    }
+
     try {
       const signUpBody = {
         email,
@@ -150,14 +161,39 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
   <Container onSubmit={onSubmitSignUp}>
     <CloseXIcon className="modal-close-x-icon" onClick={closeModal}/>
     <div className="input-wrapper">
-      <Input type="email" name="email" placeholder="이메일 주소" 
-      icon={<MailIcon/>} value={email} onChange={onChangeEmail} />
+      <Input
+      type="email"
+      name="email"
+      placeholder="이메일 주소"
+      icon={<MailIcon/>}
+      value={email}
+      onChange={onChangeEmail}
+      useValidation
+      isValid={!!email}
+      errorMessage="이메일이 필요합니다."
+    />
     </div>
     <div className="input-wrapper">
-      <Input placeholder="이름(예: 길동)" icon={<PersonIcon />} value={firstname} onChange={onChangeFirstname} />
+      <Input
+        placeholder="이름(예: 길동)" 
+        icon={<PersonIcon />}
+        value={firstname}
+        onChange={onChangeFirstname}
+        useValidation
+        isValid={!!firstname}
+        errorMessage="이름을 입력하세요."
+      />
     </div>
     <div className="input-wrapper">
-      <Input placeholder="성(예: 홍)" icon={<PersonIcon/>} value={lastname} onChange={onChangeLastname} />
+      <Input
+      placeholder="성(예: 홍)" 
+      icon={<PersonIcon/>} 
+      value={lastname} 
+      onChange={onChangeLastname}
+      useValidation
+      isValid={!!lastname}
+      errorMessage="성을 입력하세요."
+    />
     </div>
     <div className="input-wrapper sign-up-password-input-wrapper">
       <Input placeholder="비밀번호 설정하기"
@@ -170,7 +206,11 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
         )
       }
       value={password}
-      onChange={onChangePassword} />
+      onChange={onChangePassword}
+      useValidation
+      isValid={!!password}
+      errorMessage="비밀번호를 입력하세요."
+    />
     </div>
     <p className="sign-up-birthday-label">생일</p>
     <p className="sign-up-modal-birthday-info">
