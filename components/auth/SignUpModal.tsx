@@ -195,8 +195,8 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
   useEffect(() => {
     return () => {
       setValidateMode(false);
-    }
-  })
+    };
+  }, []);
   
   //* 회원가입 폼 제출하기
   const onSubmitSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
