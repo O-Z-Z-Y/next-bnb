@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import styled from "styled-components";
 
 import CloseXIcon from "../../public/static/svg/modal/modal_close_x_icon.svg"
@@ -17,7 +17,6 @@ import { signupAPI } from "../../lib/api/auth";
 
 import { useDispatch } from "react-redux";
 import { userActions } from "../../store/user";
-import { commonActions } from "../../store/common";
 
 import useValidateMode from "../../hooks/useValidateMode";
 import PasswordWarning from "./PasswordWarning";
@@ -70,7 +69,13 @@ const Container = styled.form`
     padding-bottom: 16px;
     border-bottom: 1px solid ${palette.gray_eb};
   }
+  .sign-up-modal-set-login {
+    color: ${palette.dark_cyan};
+    margin-left: 8px;
+    cursor: pointer;
+  }
 `;
+
 interface IProps {
   closeModal: () => void;
 }
@@ -163,34 +168,63 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
       ),
     [password]
   )
+
+  //* 회원가입 폼 입력 값 확인하기
+  const validateSignUpform = () => {
+    //* 인풋 값이 없다면
+    if (!email || !lastname || !firstname || !password) {
+      return false;
+    }
+    //* 비밀번호가 올바르지 않다면
+    if (
+      isPasswordHasNameOrEmail ||
+      !isPasswordOverMinLength ||
+      isPasswordHasNumberOrSymbol
+    ) {
+      return false;
+    }
+    //* 생년월일 셀럭터 값이 없다면
+    if (!birthDay || !birthMonth || !birthYear) {
+      return false;
+    }
+    return true;
+  };
+
+
+  //* 언마운트 될 때 validateMode를 꺼준다.
+  useEffect(() => {
+    return () => {
+      setValidateMode(false);
+    }
+  })
   
   //* 회원가입 폼 제출하기
   const onSubmitSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     setValidateMode(true);
+    console.log(validateSignUpform());
 
-    if (!email || !lastname || !!firstname || !password) {
-      return undefined;
-    }
+    if (validateSignUpform()) {
+      try {
+        const signUpBody = {
+          email,
+          lastname,
+          firstname,
+          password,
+          birthday: new Date(
+            `${birthYear}-${birthMonth.replace("월", "")}-${birthDay}`
+          ).toISOString(),
+        };
+        const { data } = await signupAPI(signUpBody);
 
-    try {
-      const signUpBody = {
-        email,
-        lastname,
-        firstname,
-        password,
-        birthday: new Date(
-          `${birthYear}-${birthMonth!.replace("월", "")}-${birthDay}`
-        ).toISOString(),
-      };
-      const { data } = await signupAPI(signUpBody);
+        dispatch(userActions.setLoggedUser(data));
 
-      dispatch(userActions.setLoggedUser(data));
-
-      closeModal();
-    } catch (e) {
-      console.log(e);
+        closeModal();
+        console.log(data);
+      } catch(e) {
+        console.log(e);
+      }
     }
   };
   
@@ -279,6 +313,7 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
           defaultValue="월"
           value={birthMonth}
           onChange={onChangeBirthMonth}
+          isValid={!!birthMonth}
         />
       </div>
       <div className="sign-up-modal-birthday-day-selector">
@@ -288,6 +323,7 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
           defaultValue="일"
           value={birthDay}
           onChange={onChangeBirthDay}
+          isValid={!!birthDay}
         />
       </div>
       <div className="sign-up-modal-birthday-year-selector">
@@ -297,12 +333,23 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
           defaultValue="년"
           value={birthYear}
           onChange={onChangeBirthYear}
+          isValid={!!birthYear}
         />
       </div>
     </div>
     <div className="sign-up-modal-submit-button-wrapper">
       <Button type="submit">가입하기</Button>
     </div>
+    <p>
+      이미 에어비앤비 계정이 있나요?
+      <span
+        className="sign-up-modal-set-login"
+        role="presentation"
+        onClick={() => {}}
+        >
+          로그인
+        </span>
+    </p>
   </Container>
   );
 };
