@@ -20,6 +20,7 @@ import { userActions } from "../../store/user";
 
 import useValidateMode from "../../hooks/useValidateMode";
 import PasswordWarning from "./PasswordWarning";
+import { authActions } from "../../store/auth";
 
 const Container = styled.form`
   width: 568px;
@@ -190,7 +191,6 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
     return true;
   };
 
-
   //* 언마운트 될 때 validateMode를 꺼준다.
   useEffect(() => {
     return () => {
@@ -226,6 +226,11 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
         console.log(e);
       }
     }
+  };
+
+  //* 로그인 모달로 변경하기
+  const changeToLoginModal = () => {
+    dispatch(authActions.setAuthMode("login"));
   };
   
   return (
@@ -345,7 +350,7 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
       <span
         className="sign-up-modal-set-login"
         role="presentation"
-        onClick={() => {}}
+        onClick={changeToLoginModal}
         >
           로그인
         </span>
