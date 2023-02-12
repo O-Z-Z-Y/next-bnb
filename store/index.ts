@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   auth: auth.reducer,
 });
 
-//* 스토어 타입
+//* 스토어의 타입
 export type RootState = ReturnType<typeof rootReducer>;
 
 let initialRootState: RootState;

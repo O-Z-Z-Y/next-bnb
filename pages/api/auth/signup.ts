@@ -54,8 +54,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     delete newUserWithoutPassword.password;
     res.statusCode = 200;
-    console.log('newUserWithoutPassword는 ' + newUserWithoutPassword)
-    console.log('newUser는'+ newUser)
     return res.send(newUser);
   }
   res.statusCode = 405;
