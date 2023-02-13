@@ -72,4 +72,4 @@ const validateMode = useSelector((state) => state.common.validateMode);
   );
 };
 
-export default Selector;
+export default React.memo(Selector);
