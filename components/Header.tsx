@@ -124,7 +124,7 @@ const Container = styled.div`
 
 
 const Header: React.FC = () => {
-  const isLogged = useSelector((state) => state.isLogged);
+  const isLogged = useSelector((state) => state.user.isLogged);
 
   return (
     <Container>
