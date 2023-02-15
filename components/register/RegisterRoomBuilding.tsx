@@ -9,6 +9,7 @@ import { registerRoomActions } from "../../store/registerRoom";
 import { useDispatch } from "react-redux";
 
 import RadioGroup from "../common/RadioGroup";
+import RegisterRoomFooter from "./RegisterRoomFooter";
 
 
 const Container = styled.div`
@@ -187,6 +188,11 @@ const RegisterRoomBuilding: React.FC = () => {
           options={isSetUpForGuestOptions}
         />
       </div>
+      <RegisterRoomFooter
+        isValid={false}
+        prevHref="/"
+        nextHref="/room/register/bedrooms"
+      />
     </Container>
   );
 };
