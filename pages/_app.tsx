@@ -6,16 +6,18 @@ import { wrapper } from "../store";
 import { cookieStringToObject } from "../lib/utils";
 import { meAPI } from "../lib/api/auth";
 import { userActions } from "../store/user";
+import { Provider } from "react-redux";
 
 
-const app = ({ Component, pageProps }: AppProps) => {
+const app = ({ Component, ...rest }: AppProps) => {
+  const {store, props} = wrapper.useWrappedStore(rest);
   return (
-    <>
+    <Provider store={store}>
       <GlobalStyle />
       <Header />
-      <Component {...pageProps} />
+      <Component {...props.pageProps} />
       <div id="root-modal" />
-    </>
+    </Provider>
   );
 };
 
@@ -35,4 +37,4 @@ app.getInitialProps = wrapper.getInitialAppProps(store => async context => {
   return { ...appInitialProps };
 });
 
-export default wrapper.withRedux(app);
+export default app;
