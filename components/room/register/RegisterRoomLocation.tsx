@@ -10,6 +10,7 @@ import Input from "../../common/Input";
 import { useDispatch } from "react-redux";
 import { useSelector } from "../../../store";
 import { registerRoomActions } from "../../../store/registerRoom";
+import RegisterRoomFooter from "../../register/RegisterRoomFooter";
 
 const Container = styled.div`
   padding: 62px 30px 100px;
@@ -97,7 +98,6 @@ const RegisterRoomLocation: React.FC = () => {
     dispatch(registerRoomActions.setPostcode(event.target.value));
   };
 
-
   return (
     <Container>
       <h2>숙소의 위치를 알려주세요.</h2>
@@ -143,6 +143,10 @@ const RegisterRoomLocation: React.FC = () => {
           onChange={onChangePostcode}
         />
       </div>
+      <RegisterRoomFooter
+        prevHref="/room/register/location"
+        nextHref="/room/register/amentities"
+      />
     </Container>
   );
 };
