@@ -1,4 +1,3 @@
-import { useSelector } from './index';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { BedType } from '../types/room';
@@ -26,6 +25,11 @@ type RegisterRoomState = {
   longitude: number;
 
   amentities: string[];
+  conveniences: string[];
+  photos: string[];
+  
+  description: string;
+  title: string;
 };
 
 //* 초기 상태
@@ -71,6 +75,15 @@ const initialState: RegisterRoomState = {
 
   //* 편의 시설
   amentities: [],
+  //* 편의 공간
+  conveniences: [],
+  //* 숙소 사진
+  photos: [],
+
+  //* 숙소 설명
+  description: "",
+  //* 숙소 제목
+  title: "",
 };
 
 const registerRoom = createSlice({
@@ -229,6 +242,23 @@ const registerRoom = createSlice({
     //* 편의 시설 변경하기
     setAmentities(state, action: PayloadAction<string[]>) {
       state.amentities = action.payload;
+    },
+    //* 편의 공간 변경하기
+    setConveniences(state, action: PayloadAction<string[]>) {
+      state.conveniences = action.payload;
+    },
+    //* 숙소 사진 변경하기
+    setPhotos(state, action: PayloadAction<string[]>) {
+      state.photos = action.payload;
+    },
+
+    //* 숙소 설명 변경하기
+    setDescription(state, action: PayloadAction<string>) {
+      state.description = action.payload;
+    },
+    //* 숙소 제목 변경하기
+    setTitle(state, action: PayloadAction<string>) {
+      state.title = action.payload;
     },
   },
 });
