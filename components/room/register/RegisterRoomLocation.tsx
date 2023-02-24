@@ -182,8 +182,8 @@ const RegisterRoomLocation: React.FC = () => {
         />
       </div>
       <RegisterRoomFooter
-        prevHref="/room/register/location"
-        nextHref="/room/register/amentities"
+        prevHref="/room/register/bathroom"
+        nextHref="/room/register/geometry"
       />
     </Container>
   );
