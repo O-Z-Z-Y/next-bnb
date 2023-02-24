@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import palette from "../../../styles/palette";
 import CheckboxGroup from "../../common/CheckboxGroup";
-import registerRoom, { registerRoomActions } from "../../../store/registerRoom";
+import { registerRoomActions } from "../../../store/registerRoom";
 import { useSelector } from "../../../store";
 import RegisterRoomFooter from "../../register/RegisterRoomFooter";
 import { convenienceList } from "../../../lib/staticData";
