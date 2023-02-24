@@ -77,9 +77,9 @@ const initialState: RegisterRoomState = {
   amentities: [],
   //* 편의 공간
   conveniences: [],
+  
   //* 숙소 사진
   photos: [],
-
   //* 숙소 설명
   description: "",
   //* 숙소 제목
