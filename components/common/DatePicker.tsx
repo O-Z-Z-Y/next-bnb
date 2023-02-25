@@ -4,6 +4,7 @@ import ReactDatePicker, { ReactDatePickerProps } from "react-datepicker";
 import palette from "../../styles/palette";
 import "react-datepicker/dist/react-datepicker.css";
 import ko from "date-fns/locale/ko";
+import { addHours } from "date-fns";
 
 const Container = styled.div`
   width: 100%;
@@ -30,23 +31,23 @@ const Container = styled.div`
   }
   .react-datepicker__navigation--previous {
     top: 40px;
-    left: 70px;
+    left: 56px;
     border: 0;
-    background-image: url("/static/svg/common/datePicker/datepicker_left_arrow.svg");
+    /* background-image: url("/static/svg/common/datePicker/datepicker_left_arrow.svg");
     background-size: contain;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
   }
   .react-datepicker__navigation--next {
     top: 40px;
     right: 56px;
     border: 0;
-    background-image: url("/static/svg/common/datePicker/datepicker_right_arrow.svg");
+    /* background-image: url("/static/svg/common/datePicker/datepicker_right_arrow.svg");
     background-size: contain;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
   }
-  .react-datepicker__navigation-icon {
+  /* .react-datepicker__navigation-icon {
     display:none;
-  }
+  } */
   .react-datepicker__current-month {
     font-size: 16px;
     font-weight: 600;
@@ -85,6 +86,15 @@ const Container = styled.div`
       border-radius: 50%;
     }
   }
+  .react-datepicker__day--disabled {
+    color: ${palette.gray_dd} !important;
+  }
+  .react-datepicker__day--today {
+    font-weight: bold;
+  }
+  .react-datepicker__day--outside-month {
+    color: ${palette.gray_dd} !important;
+  }
   .react-datepicker__day--in-range {
     background-color: ${palette.gray_f7};
   }
@@ -115,10 +125,22 @@ const Container = styled.div`
   }
 `;
 
-const DatePicker: React.FC<ReactDatePickerProps> = ({ ...props }) => {
+const DatePicker: React.FC<ReactDatePickerProps> = ({ onChange, ...props }) => {
   return (
     <Container>
-      <ReactDatePicker {...props} disabledKeyboardNavigation locale={ko} />
+      <ReactDatePicker
+        {...props}
+        dateFormat="MM월 dd일"
+        disabledKeyboardNavigation
+        locale={ko}
+        onChange={(date, event) => {
+          if (date) {
+            onChange(addHours(date as Date, 9), event);
+          } else {
+            onChange(null, event);
+          }
+        }}
+      />
     </Container>
   );
 };
