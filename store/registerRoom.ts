@@ -207,7 +207,6 @@ const registerRoom = createSlice({
     setBathroomCount(state, action: PayloadAction<number>) {
       state.bathroomCount = action.payload;
     },
-
     //* 욕실 유형 변경하기
     setBathroomType(state, action: PayloadAction<"private" | "public">) {
       state.bathroomType = action.payload;

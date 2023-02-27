@@ -121,7 +121,7 @@ const RegisterRoomBedRooms: React.FC = () => {
           onChange={onChangeBedroomCount}
           label="게스트가 사용할 수 있는 침실은 몇 개인가요?"
           options={bedroomCountList}
-          isValid={!bedroomCount}
+          isValid={!!bedroomCount}
         />
       </div>
       <div className="register-room-bed-count-wrapper">
@@ -139,7 +139,7 @@ const RegisterRoomBedRooms: React.FC = () => {
       <RegisterRoomFooter
         prevHref="/room/register/building"
         nextHref="/room/register/bathroom"
-        isValid={!bedroomCount}
+        isValid={!!bedroomCount}
       />
     </Container>
   );

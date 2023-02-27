@@ -5,6 +5,7 @@ import DatePicker from "../../common/DatePicker";
 import { useSelector } from "../../../store";
 import { registerRoomActions } from "../../../store/registerRoom";
 import { useDispatch } from "react-redux";
+import RegisterRoomFooter from "../../register/RegisterRoomFooter";
 
 const Container = styled.div`
   padding: 62px 30px 100px;
@@ -74,12 +75,7 @@ const RegisterRoomDate: React.FC = () => {
     );
   };
 
-  const endRef = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    if (endRef && endRef.currunt) {
-      endRef.current.focus();
-    }
-  }, [startDate]);
+
 
   return (
     <Container>
@@ -116,6 +112,10 @@ const RegisterRoomDate: React.FC = () => {
           </label>
         </div>
       </div>
+      <RegisterRoomFooter
+        prevHref="/room/register/price"
+        nextHref="/room/register/checklist"
+      />
     </Container>
   );
 };

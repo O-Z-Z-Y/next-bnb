@@ -35,6 +35,8 @@ const Container = styled.li`
   .register-room-bed-type-bedroom-counts {
     font-size: 19px;
     color: ${palette.gray_76};
+    max-width: 240px;
+    word-break: keep-all;
   }
   .register-room-bed-type-counter {
     width: 290px;
@@ -88,6 +90,7 @@ const RegisterRoomPublicBedTypes: React.FC = () => {
           onClick={() => setOpened(!opened)}
           styleType="register"
           color="white"
+          width="161px"
         >
           {opened && "완료"}
           {!opened &&

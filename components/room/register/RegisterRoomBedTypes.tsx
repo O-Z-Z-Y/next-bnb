@@ -35,6 +35,12 @@ const Container = styled.li`
     width: 290px;
     margin-bottom: 18px;
   }
+  .register-room-bed-type-bedroom-counts {
+    font-size: 19px;
+    color: ${palette.gray_76};
+    max-width: 240px;
+    word-break: keep-all;
+  }
 `
 
 interface IProps {
@@ -44,8 +50,11 @@ interface IProps {
 const RegisterRoomBedTypes: React.FC<IProps> = ({ bedroom }) => {
   const [opened, setOpened] = useState(false);
 
+  const initialBedOptions = bedroom.beds.map((bed) => bed.type);
   //* 선택된 침대 옵션들
-  const [activedBedOptions, setActivedBedOptions] = useState<BedType[]>([]);
+  const [activedBedOptions, setActivedBedOptions] = useState<BedType[]>(
+    initialBedOptions
+  );
 
   const dispatch = useDispatch();
 
@@ -77,7 +86,11 @@ const RegisterRoomBedTypes: React.FC<IProps> = ({ bedroom }) => {
         count: value,
       })
     );
-
+    
+    //* 침대 종류 텍스트
+    const bedsText = useMemo(() => {
+      const texts = bedroom.beds.map((bed) => `${bed.type} ${bed.count}개`);
+    }, [bedroom]);
   return (
     <Container>
       <div className="register-room-bed-type-top">
@@ -86,7 +99,8 @@ const RegisterRoomBedTypes: React.FC<IProps> = ({ bedroom }) => {
             {bedroom.id}번 침실
           </p>
           <p className="register-room-bed-type-bedroom-counts">
-            침대 {totalBedsCount}개
+            침대 {totalBedsCount}개<br />
+            {bedsText}
           </p>
         </div>
         <Button onClick={toggleOpened} width="161px">
