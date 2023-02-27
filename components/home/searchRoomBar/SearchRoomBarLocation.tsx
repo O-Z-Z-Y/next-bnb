@@ -25,7 +25,7 @@ const Container = styled.div`
     top: 16px;
     left: 20px;
     .search-room-bar-location-label {
-      font-size: 10px;
+      font-size: 14px;
       font-weight: 800;
       margin-bottom: 4px;
     }
@@ -156,7 +156,7 @@ const SearchRoomBarLocation: React.FC = () => {
     <Container onClick={onClickInput}>
       <OutsideClickHandler onOutsideClick={() => setPopupOpened(false)}>
         <div className="search-room-bar-location-texts">
-          <p className="search-room-bar-location-label">인원</p>
+          <p className="search-room-bar-location-label">여행지</p>
           <input
             value={location}
             onChange={(e) => setLocationDispatch(e.target.value)}

@@ -17,7 +17,7 @@ const searchRoom = createSlice({
   name: "searchRoom",
   initialState,
   reducers: {
-    //* 유저 변경하기
+    //* 여행지 변경하기
     setLocation(state, action: PayloadAction<string>) {
       state.location = action.payload;
       return state;
