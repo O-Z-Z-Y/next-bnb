@@ -1,6 +1,6 @@
 export default {
-  cardinal: "a41850",
-  davidson_orange: "c13515",
+  cardinal: "#a41850",
+  davidson_orange: "#c13515",
   tawny: "#d93900",
   amaranth: "#e51e53",
   orange: "#fc642d",

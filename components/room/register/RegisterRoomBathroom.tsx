@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import palette from "../../../styles/palette";
-import Counter from "../../../components/common/Counter";
+import Counter from "../../common/Counter";
 import { useSelector } from "../../../store";
-import RegisterRoomFooter from "../../../components/register/RegisterRoomFooter";
-import RadioGroup from "../../../components/common/RadioGroup";
+import RegisterRoomFooter from "../../register/RegisterRoomFooter";
+import RadioGroup from "../../common/RadioGroup";
 import { registerRoomActions } from "../../../store/registerRoom";
 
 const Container = styled.div`
