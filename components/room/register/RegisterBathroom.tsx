@@ -62,8 +62,8 @@ const RegisterBathroom: React.FC = () => {
         label="게스트가 단독으로 사용하는 욕실인가요?"
         value={bathroomType}
         isValid={!!bathroomType}
-        onChange={(value) =>
-          registerRoomActions.setBathroomType(value)}
+        onChange={(value: any) =>
+          dispatch(registerRoomActions.setBathroomType(value))}
         options={[
           { value: "private", label: "예" },
           { value: "public", label: "아니요, 공용입니다." },

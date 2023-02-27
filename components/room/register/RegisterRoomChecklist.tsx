@@ -4,6 +4,7 @@ import { useSelector } from "../../../store";
 import isEmpty from "lodash/isEmpty"
 import RegisterRoomCheckStep from "./RegisterRoomCheckStep";
 import RegisterRoomFooter from "../../register/RegisterRoomFooter";
+import RegisterRoomSubmitFooter from "./RegisterRoomSubmitFooter";
 
 const Container = styled.div`
   padding: 62px 30px 100px;
@@ -269,7 +270,7 @@ const RegisterRoomChecklist: React.FC = () => {
         />
       </ul>
       {isDateActived ? (
-        <RegisterRoomFooter />
+        <RegisterRoomSubmitFooter />
       ) : (
         <RegisterRoomFooter
           prevHref="/room/register/date"
@@ -279,5 +280,4 @@ const RegisterRoomChecklist: React.FC = () => {
     </Container>
   );
 };
-
 export default RegisterRoomChecklist;
