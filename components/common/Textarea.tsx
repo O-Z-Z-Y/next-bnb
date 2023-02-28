@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import ReactAutosizeTextarea from "react-autosize-textarea"
 import palette from "../../styles/palette";

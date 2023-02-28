@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import ReactDatePicker, { ReactDatePickerProps } from "react-datepicker";
 import palette from "../../styles/palette";

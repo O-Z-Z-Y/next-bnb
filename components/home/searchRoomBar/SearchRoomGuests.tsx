@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";

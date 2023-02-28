@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import CheckMarkIcon from "../../../public/static/svg/register/dark_cyan_check_mark.svg"

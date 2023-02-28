@@ -1,6 +1,4 @@
-import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
-import { wrapper } from "../../store";
 import RoomMain from "../../components/room/main/RoomMain";
 import { getRoomListAPI } from "../../lib/api/room";
 import { roomActions } from "../../store/room";
@@ -18,8 +16,8 @@ const index: NextPage<IProps> = ({ rooms }) => {
   return <RoomMain />;
 };
 
-export const getServerSideProps: GetServerSideProps = async (context : GetServerSidePropsContext) => {
-
+export const getServerSideProps = async (context : GetServerSidePropsContext) => {
+  
   const {
     checkInDate,
     checkOutDate,
@@ -34,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async (context : GetServer
   console.log(context.query);
 
   try {
-    const { data: rooms} = await getRoomListAPI({
+    const { data: rooms } = await getRoomListAPI({
       checkInDate,
       checkOutDate,
       adultCount,

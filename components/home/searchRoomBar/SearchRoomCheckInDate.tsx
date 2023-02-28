@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import useSearchRoomDate from "../../../hooks/useSearchRoomDate";
 import palette from "../../../styles/palette";

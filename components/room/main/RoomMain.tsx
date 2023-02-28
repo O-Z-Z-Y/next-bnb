@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled, { css } from "styled-components";
 import { format } from "date-fns";
 import MapIcon from "../../../public/static/svg/room/main/map.svg"

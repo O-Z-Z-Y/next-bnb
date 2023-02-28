@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { useSelector } from "../../../store";
 import RoomCard from "./RoomCard";

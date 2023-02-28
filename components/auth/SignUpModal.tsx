@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect } from "react";
 import styled from "styled-components";
 
 import CloseXIcon from "../../public/static/svg/modal/modal_close_x_icon.svg"

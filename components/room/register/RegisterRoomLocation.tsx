@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import palette from "../../../styles/palette";
 import NavigationIcon from "../../../public/static/svg/register/navigation.svg";

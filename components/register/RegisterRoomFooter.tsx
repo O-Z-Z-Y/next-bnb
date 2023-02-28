@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import BackArrowIcon from "../../public/static/svg/register/register_room_footer_back_arrow.svg";

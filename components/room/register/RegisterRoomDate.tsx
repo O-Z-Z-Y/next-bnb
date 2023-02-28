@@ -1,4 +1,3 @@
-import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import palette from "../../../styles/palette";
 import DatePicker from "../../common/DatePicker";

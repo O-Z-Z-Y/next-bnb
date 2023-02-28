@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 import AirbnbLogoIcon from "../public/static/svg/logo/logo.svg"
 import AirbnbLogoTextIcon from "../public/static/svg/logo/logo_text.svg"
@@ -6,13 +5,6 @@ import Link from "next/link";
 import palette from "../styles/palette";
 
 import { useSelector } from "../store";
-
-import { useDispatch } from "react-redux";
-import { authActions } from "../store/auth";
-import AuthModal from "./auth/AuthModal";
-import OutsideClickHandler from "react-outside-click-handler";
-import { logoutAPI } from "../lib/api/auth";
-import { userActions } from "../store/user";
 
 import HeaderAuths from "./HeaderAuths";
 import HeaderUserProfile from "./HeaderUserProfile";

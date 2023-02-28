@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import styled, { css } from "styled-components";
 import differenceInDays from "date-fns/differenceInDays";
 import Link from "next/link";

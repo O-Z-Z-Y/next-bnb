@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import palette from "../../styles/palette";
 import CounterMinusIcon from "../../public/static/svg/common/counter/counter_minus.svg"

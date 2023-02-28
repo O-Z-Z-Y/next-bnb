@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import styled from "styled-components";
 import palette from "../../styles/palette";
 import Selector from "../common/Selector";

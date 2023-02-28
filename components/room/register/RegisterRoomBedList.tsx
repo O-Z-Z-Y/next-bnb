@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "../../../store";
 
 import RegisterRoomBedTypes from "./RegisterRoomBedTypes";

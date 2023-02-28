@@ -1,4 +1,3 @@
-import React from "react";
 import SignUpModal from "./SignUpModal";
 import LoginModal from "./LoginModal";
 import { useSelector, RootState } from "../../store";

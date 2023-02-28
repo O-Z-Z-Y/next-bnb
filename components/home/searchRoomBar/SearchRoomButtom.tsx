@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import Button from "../../common/Button";
 import SearchIcon from "../../../public/static/svg/search/white_search.svg"
