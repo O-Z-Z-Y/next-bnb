@@ -114,7 +114,7 @@ export const bnbBuildingTypeList = [
 ];
 
 //* 부티크 호텔 건물유형
-export const boutiquesHotelBuildingTypeList = [
+export const boutiqueHotelBuildingTypeList = [
   "부티크 호텔",
   "아파트 호텔",
   "헤리티지 호텔(인도)",
