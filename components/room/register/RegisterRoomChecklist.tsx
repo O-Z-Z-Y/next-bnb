@@ -94,11 +94,11 @@ const RegisterRoomChecklist: React.FC = () => {
   }, [])
 
   //* 편의 시설이 활성화됐는지
-  const isAmentitiesActived = useMemo(() => {
+  const isAmenitiesActived = useMemo(() => {
     /* 최소 1개 이상의 편의 시설을 제공하도록 하려면
-    const { amentities } = registerRoom;
-    if (amentities.length===0) {}
-    if(isEmpty(amentities)) {}
+    const { amenities } = registerRoom;
+    if (amenities.length===0) {}
+    if(isEmpty(amenities)) {}
     */
     if (!isLocationActived) {
       return false;
@@ -108,7 +108,7 @@ const RegisterRoomChecklist: React.FC = () => {
 
   //* 공용공간이 활성화됐는지
   const isconveniencesActived = useMemo(() => {
-    if (!isAmentitiesActived) {
+    if (!isAmenitiesActived) {
       return false;
     }
     return true;
@@ -173,8 +173,8 @@ const RegisterRoomChecklist: React.FC = () => {
     if (!isLocationActived) {
       return "location"
     }
-    if (!isAmentitiesActived) {
-      return "amentities"
+    if (!isAmenitiesActived) {
+      return "amenities"
     }
     if (!isconveniencesActived) {
       return "conveniences"
@@ -228,9 +228,9 @@ const RegisterRoomChecklist: React.FC = () => {
         />
         <RegisterRoomCheckStep
           step="편의 시설"
-          href="/room/register/amentities"
-          disabled={!isAmentitiesActived}
-          inProgress={stepInProgress === "amentities"}
+          href="/room/register/amenities"
+          disabled={!isAmenitiesActived}
+          inProgress={stepInProgress === "amenities"}
         />
         <RegisterRoomCheckStep
           step="공용공간"

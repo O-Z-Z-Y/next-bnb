@@ -1,8 +1,8 @@
 import { NextPage } from "next";
-import RegisterRoomAmentities from "../../../components/room/register/RegisterRoomAmentities";
+import RegisterRoomAmenities from "../../../components/room/register/RegisterRoomAmenities";
 
-const amentities: NextPage = () => {
-  return <RegisterRoomAmentities />;
+const amenities: NextPage = () => {
+  return <RegisterRoomAmenities />;
 };
 
-export default amentities;
+export default amenities;

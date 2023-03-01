@@ -27,7 +27,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         streetAddress,
         detailAddress,
         postcode,
-        amentities,
+        amenities,
         conveniences,
         photos,
         description,
@@ -57,7 +57,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         !streetAddress ||
         !detailAddress ||
         !postcode ||
-        !amentities ||
+        !amenities ||
         !conveniences ||
         !photos ||
         !description ||

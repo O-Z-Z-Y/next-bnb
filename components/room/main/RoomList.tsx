@@ -9,12 +9,16 @@ const Container = styled.ul`
   width: 100%;
 `;
 
-const RoomList: React.FC = () => {
+interface IProps {
+  showMap: boolean;
+}
+
+const RoomList: React.FC<IProps> = ({ showMap }) => {
   const rooms = useSelector((state) => state.room.rooms);
   return (
-    <Container>
+    <Container showMap={showMap}>
       {rooms.map((room) => (
-        <RoomCard room={room} key={room.id} />
+        <RoomCard room={room} key={room.id} showMap={showMap} />
       ))}
     </Container>
   );

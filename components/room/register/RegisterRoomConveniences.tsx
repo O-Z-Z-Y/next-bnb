@@ -50,7 +50,7 @@ const RegisterRoomConveniences: React.FC = () => {
         />
       </div>
       <RegisterRoomFooter
-        prevHref="/room/register/amentities"
+        prevHref="/room/register/amenities"
         nextHref="/room/register/photo"
       />
     </Container>

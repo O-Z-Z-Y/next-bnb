@@ -1,4 +1,4 @@
-import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
+import { GetServerSidePropsContext, NextPage } from "next";
 import RoomMain from "../../components/room/main/RoomMain";
 import { getRoomListAPI } from "../../lib/api/room";
 import { roomActions } from "../../store/room";
