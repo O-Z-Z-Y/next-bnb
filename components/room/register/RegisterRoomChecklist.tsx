@@ -85,7 +85,7 @@ const RegisterRoomChecklist: React.FC = () => {
       !city ||
       !district ||
       !streetAddress ||
-      !detailAddress ||
+      // !detailAddress || 선택 사항
       !postcode
     ) {
       return false;
@@ -194,6 +194,7 @@ const RegisterRoomChecklist: React.FC = () => {
     if (!isDateActived) {
       return "date"
     }
+    return "";
   }, [])
 
   return (

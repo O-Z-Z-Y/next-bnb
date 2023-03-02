@@ -7,17 +7,22 @@ import { cookieStringToObject } from "../lib/utils";
 import { meAPI } from "../lib/api/auth";
 import { userActions } from "../store/user";
 import { Provider } from "react-redux";
-
+import Head from "next/head";
 
 const app = ({ Component, ...rest }: AppProps) => {
   const {store, props} = wrapper.useWrappedStore(rest);
   return (
-    <Provider store={store}>
-      <GlobalStyle />
-      <Header />
-      <Component {...props.pageProps} />
-      <div id="root-modal" />
-    </Provider>
+    <>
+      <Head>
+          <title>여행은 살아보는 거야 - 에어비앤비 </title>
+      </Head>
+      <Provider store={store}>
+        <GlobalStyle />
+        <Header />
+        <Component {...props.pageProps} />
+        <div id="root-modal" />
+      </Provider>
+    </>
   );
 };
 
