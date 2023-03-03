@@ -64,13 +64,14 @@ const Container = styled.div`
     height: 42px;
     padding: 0 6px 0 16px;
     border: 0;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.18);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.18);
     border-radius: 21px;
     background-color: white;
     cursor: pointer;
     outline: none;
+    transition: all 0.3s;
     &:hover {
-      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
+      box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.18);
     }
     .header-user-profile-image {
       margin-left: 8px;

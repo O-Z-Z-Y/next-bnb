@@ -45,8 +45,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         !maximumGuestCount ||
         !bedroomCount ||
         !bedCount ||
-        !bedList ||
-        !publicBedList ||
+        // !bedList ||
+        // !publicBedList ||
         !bathroomCount ||
         !bathroomType ||
         !latitude ||
@@ -55,7 +55,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         !city ||
         !district ||
         !streetAddress ||
-        !detailAddress ||
+        // !detailAddress ||
         !postcode ||
         !amenities ||
         !conveniences ||
@@ -68,6 +68,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         !hostId
       ) {
         res.statusCode = 400;
+        alert("필수 값이 없습니다")
         res.send("필수 값이 없습니다.");
       }
       const rooms = Data.room.getList();

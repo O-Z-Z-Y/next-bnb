@@ -24,6 +24,7 @@ const Container = styled.li<{ showMap: boolean }>`
       margin-right: 0;
     }
   }
+
   .room-card-photo-wrapper {
     position: relative;
     width: 100%;

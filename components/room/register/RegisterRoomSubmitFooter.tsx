@@ -3,7 +3,7 @@ import Link from "next/link";
 import palette from "../../../styles/palette";
 import Button from "../../common/Button";
 import BackArrowIcon from "../../../public/static/svg/register/register_room_footer_back_arrow.svg"
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation"
 import { registerRoomAPI } from "../../../lib/api/room";
 import { useSelector } from "../../../store";
 
