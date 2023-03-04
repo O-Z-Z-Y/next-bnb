@@ -28,7 +28,7 @@ export type RegisterRoomState = {
   city: string;
   district: string;
   streetAddress: string;
-  detailAddress: string | null;
+  detailAddress: string | undefined;
   postcode: string;
   latitude: number;
   longitude: number;

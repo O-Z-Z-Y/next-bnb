@@ -20,13 +20,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             accessKeyId: process.env.ACCESSKEY_ID,
             secretAccessKey: process.env.SECRET_ACCESSKEY_ID,
           });
+
+          let formidableFile:any = files.file
   
-          const stream = createReadStream(files.file.filepath);
+          const stream = createReadStream(formidableFile.filepath);
 
           //* 파일 이름
-          const fileName = files.file.originalFilename.split(".").shift();
+          const fileName = formidableFile.originalFilename.split(".").shift();
           //* 확장자
-          const fileExtension = files.file.originalFilename.split(".").pop();
+          const fileExtension = formidableFile.originalFilename.split(".").pop();
   
           await s3
             .upload({

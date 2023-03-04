@@ -19,7 +19,7 @@ const Container = styled.div`
     margin-bottom: 15px;
   }
 
-  .room.detail-location {
+  .room-detail-location {
     font-size: 14px;
     font-weight: 600;
     text-decoration: underline;

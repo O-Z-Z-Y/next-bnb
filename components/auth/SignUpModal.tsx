@@ -219,7 +219,7 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
           firstname,
           password,
           birthday: new Date(
-            `${birthYear}-${birthMonth.replace("월", "")}-${birthDay}`
+            `${birthYear}-${birthMonth!.replace("월", "")}-${birthDay}`
           ).toISOString(),
         };
         const { data } = await signupAPI(signUpBody);

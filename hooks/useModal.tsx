@@ -3,21 +3,13 @@ import { createPortal } from "react-dom";
 import styled,{ css, keyframes } from "styled-components";
 
 const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 `;
 
 const slideUp = keyframes`
-  from {
-    margin-top: 70em;
-  }
-  to {
-    margin-top: 0;
-  }
+  from { margin-top: 70em; }
+  to { margin-top: 0; }
 `
 
 const Container = styled.div<{ mounted: boolean }>`

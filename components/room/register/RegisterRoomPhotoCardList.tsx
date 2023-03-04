@@ -6,6 +6,7 @@ import palette from "../../../styles/palette";
 import { useDispatch } from "react-redux";
 import { registerRoomActions } from "../../../store/registerRoom";
 import { uploadFileAPI } from "../../../lib/api/file";
+import React from "react";
 
 const Container = styled.div`
   width: 858px;
@@ -159,7 +160,7 @@ const RegisterRoomPhotoCardList: React.FC<IProps> = ({ photos }) => {
             newPhotos[index] = data;
             dispatch(registerRoomActions.setPhotos(newPhotos));
           })
-          .catch((e) => console.log(e.message));
+          .catch((e: any) => console.log(e.message));
       }
     };
     el.click();
@@ -173,7 +174,7 @@ const RegisterRoomPhotoCardList: React.FC<IProps> = ({ photos }) => {
             <li className="register-room-first-photo-wrapper">
               <img src={photo} alt="" />
               <div className="register-room-photo-interaction-buttons">
-                <button type="button" onClick={deletePhoto}>
+                <button type="button" onClick={() => {deletePhoto(index);}}>
                   <TrashCanIcon />
                 </button>
                 <button type="button" onClick={() => {editPhoto(index);}}>
@@ -186,7 +187,7 @@ const RegisterRoomPhotoCardList: React.FC<IProps> = ({ photos }) => {
             <li className="register-room-photo-card">
               <img src={photo} alt="" />
               <div className="register-room-photo-interaction-buttons">
-                <button type="button" onClick={deletePhoto}>
+                <button type="button" onClick={() => {deletePhoto(index);}}>
                   <TrashCanIcon />
                 </button>
                 <button type="button" onClick={() => {editPhoto(index);}}>

@@ -1,12 +1,18 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useSelector } from "../../../store";
 import RoomCard from "./RoomCard";
 
-const Container = styled.ul`
+const Container = styled.ul<{ showMap: boolean }>`
   display: flex;
   flex-wrap: wrap;
   padding-top: 50px;
   width: 100%;
+  ${({ showMap }) =>
+    showMap &&
+    css`
+      flex-direction: column;
+    `
+  }
 `;
 
 interface IProps {

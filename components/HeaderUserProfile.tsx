@@ -19,7 +19,7 @@ const HeaderUserProfile: React.FC = () => {
     try {
       await logoutAPI();
       dispatch(userActions.initUser());
-    } catch(e) {
+    } catch(e: any) {
       console.log(e.message);
     }
   };

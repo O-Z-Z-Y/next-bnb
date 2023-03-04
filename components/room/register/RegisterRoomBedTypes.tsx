@@ -75,8 +75,6 @@ const RegisterRoomBedTypes: React.FC<IProps> = ({ bedroom }) => {
     return bedTypes.filter((bedType) => !activedBedOptions.includes(bedType));
   }, [activedBedOptions, bedroom]);
 
-  console.log(activedBedOptions)
-
   //* 침실 침대 개수 변경 시
   const onChangeBedTypeCount = (value: number, type: BedType) =>
     dispatch(
@@ -87,14 +85,15 @@ const RegisterRoomBedTypes: React.FC<IProps> = ({ bedroom }) => {
       })
     );
     
-    //* 침대 종류 텍스트
-    const bedsText = useMemo(() => {
-      const texts = bedroom.beds.map((bed) => `${bed.type} ${bed.count}개`);
-    }, [bedroom]);
+  //* 침대 종류 텍스트
+  const bedsText = useMemo(() => {
+    const texts = bedroom.beds.map((bed) => `${bed.type} ${bed.count}개`);
+    return texts.join(",");
+  }, [bedroom]);
   return (
     <Container>
       <div className="register-room-bed-type-top">
-        <div className="register-room-bed-type-bedroom-texts">
+        <div>
           <p className="register-room-bed-type-bedroom">
             {bedroom.id}번 침실
           </p>

@@ -10,6 +10,13 @@ const Container = styled.div`
   display: flex;
   max-height: 465px;
   margin-bottom: 48px;
+  img {
+    transition: 0.3s
+  }
+  
+  img:hover {
+    filter: brightness(80%);
+  }
 
   .room-detail-one-photo {
     img {
