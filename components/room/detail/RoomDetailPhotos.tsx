@@ -44,7 +44,7 @@ const Container = styled.div`
       position: relative;
       width: 33.33%;
       img {
-        height: calc()((100% - 8px) / 2)
+        height: calc((100% - 8px) / 2)
       }
     }
   }

@@ -1,8 +1,26 @@
 import { useRef, useEffect, useState} from "react";
 import { createPortal } from "react-dom";
-import styled from "styled-components";
+import styled,{ css, keyframes } from "styled-components";
 
-const Container = styled.div`
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const slideUp = keyframes`
+  from {
+    margin-top: 70em;
+  }
+  to {
+    margin-top: 0;
+  }
+`
+
+const Container = styled.div<{ mounted: boolean }>`
   width: 100%;
   height: 100%;
   display: flex;
@@ -12,12 +30,20 @@ const Container = styled.div`
   top: 0;
   left: 0;
   z-index: 11;
+  
   .modal-background {
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.75);
   }
+  ${({ mounted }) =>
+    mounted && css`
+      animation: 0.5s ${fadeIn} ease-in-out;
+      form {
+        animation: 0.5s ${slideUp} ease-out;
+      }
+    `}
 `;
 
 const useModal = () => {
@@ -38,6 +64,7 @@ const useModal = () => {
   const ModalPortal: React.FC<IProps> = ({ children }) => {
     const ref = useRef<Element | null>();
     const [mounted, setMounted] = useState(false);
+
     useEffect(() => {
       setMounted(true);
       if (document) {
@@ -48,7 +75,7 @@ const useModal = () => {
     
     if (ref.current && mounted && modalOpened) {
       return createPortal(
-        <Container>
+        <Container mounted={mounted}>
           <div className="modal-background" role="presentation" onClick={closeModal} />
           {children}
         </Container>,
