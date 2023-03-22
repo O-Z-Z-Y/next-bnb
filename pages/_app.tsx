@@ -10,7 +10,9 @@ import { Provider } from "react-redux";
 import Head from "next/head";
 
 const app = ({ Component, ...rest }: AppProps) => {
+  
   const {store, props} = wrapper.useWrappedStore(rest);
+
   return (
     <>
       <Head>
